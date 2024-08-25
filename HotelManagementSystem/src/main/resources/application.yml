@@ -1,0 +1,48 @@
+server:
+  port: 8080
+  error:
+    include-binding-errors: always
+    include-message: always
+    include-stacktrace: never
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hotelmanagement_db
+    username: db_user
+    password: db_password
+  jpa:
+    show_sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+        format_sql: true
+        #inmemory ile kayitli sifre ve username
+
+#logging:   #logging.file.name:log/hotelapp.log
+#  file:
+#    name: log/hotelapp.log
+#  pattern:
+#    file: "%d %-5level [%thread] %logger:%msg%n"
+#  level:
+#    '[org.springframework.web]': WARN
+#    '[org.hibernate]': INFO
+#    #'[com.tpe]': INFO
+#    com:
+#      tpe: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['info','health','threaddump','env','beans','loggers']
+  info:
+    env:
+      enabled: true
+
+info:
+  application:
+    name: 'Hotel Management System Demo App '
+    version: '@project.version@'
+    description: 'Demo App For Spring Boot'
