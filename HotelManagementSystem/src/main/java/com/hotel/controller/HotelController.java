@@ -28,11 +28,10 @@ public class HotelController {
         hotelService.saveHotel(hotel);
         return new ResponseEntity<>("Hotel basariyla kaydedildi.", HttpStatus.CREATED);//201
     }
-    
+
     //READ
     //2-Get all hotels, return : List<Hotel> + OK
     //http://localhost8080/hotels + GET
-
     @GetMapping
     public ResponseEntity<List<Hotel>> getAllHotels() {
         List<Hotel> hotels = hotelService.getHotels();
