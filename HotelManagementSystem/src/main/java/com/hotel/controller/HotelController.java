@@ -19,6 +19,7 @@ public class HotelController {
 
     private final HotelService hotelService;
 
+    //CREATE
     //1-save a hotel & return message--CREATED
     //request : http://localhost8080/hotels + POST +json format body
     //responce : basarili + http status code(CREATED)
@@ -37,6 +38,31 @@ public class HotelController {
         List<Hotel> hotels = hotelService.getHotels();
         return ResponseEntity.ok(hotels);//200--basarili
     }
+
+    //READ BY ID
+    //3-Get a hotel by Id,return : Hotel
+    //request : http://localhost:8080/hotels/2
+    //response : return : Hotel
+    @GetMapping("/{identity}")
+    public ResponseEntity<Hotel> getHotel(@PathVariable Long id){
+        Hotel hotel = hotelService.getHotelById(id);
+        return ResponseEntity.ok(hotel);
+    }
+
+    //DELETE
+    //4- delete a hotel by ID, return:Message
+    //request : http://localhost:8080/books/2
+    //response : Message
+    @DeleteMapping("/{deleteId}")
+    public ResponseEntity<String > deleteHotel(@PathVariable Long id){
+        hotelService.deleteHotelById(id);
+        return ResponseEntity.ok("Hotel basariyla silindi!");
+    }
+
+    //UPDATE
+
+
+
 
 
 
