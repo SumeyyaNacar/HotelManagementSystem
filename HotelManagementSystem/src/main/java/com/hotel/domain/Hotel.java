@@ -20,12 +20,12 @@ public class Hotel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Lutfen gecerli bir deger giriniz!")
+    @NotBlank(message = "Isim bos olamaz!")
     @Column(nullable = false)
     private String name;
 
 
-    @NotBlank(message = "Lutfen gecerli bir deger giriniz!")
+    @NotBlank(message = "Lutfen adres giriniz!")
     @Column(nullable = false)
     private String location;
 
