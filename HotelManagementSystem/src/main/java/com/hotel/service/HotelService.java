@@ -1,6 +1,7 @@
 package com.hotel.service;
 
 import com.hotel.domain.Hotel;
+import com.hotel.exception.HotelNotFoundException;
 import com.hotel.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,20 @@ public class HotelService {
     public List<Hotel> getHotels() {
         return hotelRepository.findAll();
     }
+
+    //3-Get a hotel by Id
+    public Hotel getHotelById(Long id) {
+        Hotel hotel = hotelRepository.findById(id).orElseThrow(()->new HotelNotFoundException("Hotel bulunamadi!"));
+        return hotel;
+    }
+
+    //4- delete a hotel by ID
+    public void deleteHotelById(Long id) {
+       //Hotel hotel = getHotelById(id);
+       //hotelRepository.deleteById(id);
+
+        hotelRepository.deleteById(id);//getHotelById()
+    }
+
 
 }
