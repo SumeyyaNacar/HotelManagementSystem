@@ -1,5 +1,6 @@
 package com.hotel.domain;
 
+import com.hotel.dto.HotelDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Hotel {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +35,12 @@ public class Hotel {
     private List<Room> room;
 
 
+
+ // public Hotel(HotelDTO hotelDTO) {
+ //     this.name = hotelDTO.getName();
+ //     this.location = hotelDTO.getLocation();
+ //     this.room = hotelDTO.getRoom();
+ // }
 
 
 

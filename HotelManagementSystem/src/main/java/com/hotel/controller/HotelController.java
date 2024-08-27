@@ -1,6 +1,7 @@
 package com.hotel.controller;
 
 import com.hotel.domain.Hotel;
+import com.hotel.dto.HotelDTO;
 import com.hotel.service.HotelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,22 @@ public class HotelController {
     }
 
     //UPDATE
+    // Update a Hotel with Using DTO, return String bir ifade olsun
+    //dto ile ana obje korunur
+    //http://localhost:8080/hotels/update?id +JSON +PUT
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateHotel(@RequestParam("id") Long id,//query parametresindeki id @RequestParam anotasyonu ile alinip Long tipinde id ye atanacak
+                                              @Valid @RequestBody HotelDTO hotelDTO){//JSON formatindaki bilgiler @RequestBody anotasyonu ile HotelDto objesine atanacak
+        hotelService.updateHotelById(id, hotelDTO);
+
+        return new ResponseEntity<>("Hotel basariyla guncellendi.",HttpStatus.OK);
+        //return ResponseEntity.ok("Hotel basariyla guncellendi...");
+
+    }
+
+    //8-Get Hotels with Page
+
+
 
 
 

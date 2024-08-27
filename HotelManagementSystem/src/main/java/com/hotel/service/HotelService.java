@@ -1,6 +1,7 @@
 package com.hotel.service;
 
 import com.hotel.domain.Hotel;
+import com.hotel.dto.HotelDTO;
 import com.hotel.exception.HotelNotFoundException;
 import com.hotel.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,15 @@ public class HotelService {
         hotelRepository.deleteById(id);//getHotelById()
     }
 
+    //5-Update Hotel By Id
+    public void updateHotelById(Long id, HotelDTO hotelDTO) {
+        Hotel foundHotel = getHotelById(id);
+        //Hotel updatedHotel = new Hotel(hotelDTO);
 
+        foundHotel.setName(hotelDTO.getName());
+        foundHotel.setLocation(hotelDTO.getLocation());
+        foundHotel.setRoom(hotelDTO.getRoom());
+        //repoda update diye bir meyhod yok. save methodu uzernden islem yapilir. obje varsa update, yoksa yeni kayit
+        hotelRepository.save(foundHotel);
+    }
 }
