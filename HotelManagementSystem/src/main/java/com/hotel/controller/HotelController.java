@@ -74,7 +74,7 @@ public class HotelController {
 
     }
 
-    //8-Get Hotels with Page
+    //Get Hotels with Page
 
 
 
