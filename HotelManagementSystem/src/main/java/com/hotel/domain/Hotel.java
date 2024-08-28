@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,7 +33,9 @@ public class Hotel {
     private String location;
 
     @OneToMany(mappedBy = "hotel")
-    private List<Room> room;
+    private List<Room> room=new ArrayList<>();
+
+
 
 
 
