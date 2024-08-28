@@ -1,5 +1,6 @@
 package com.hotel.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +34,8 @@ public class Guest {
     @Column(nullable = false)
     private String medeniDurum;
 
-    @OneToMany
+    @OneToMany(mappedBy = "guest")
+    @JsonIgnore
     private List<Reservation> reservation;
 
 
