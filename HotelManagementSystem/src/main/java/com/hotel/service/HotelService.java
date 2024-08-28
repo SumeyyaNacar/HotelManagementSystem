@@ -45,7 +45,6 @@ public class HotelService {
 
         foundHotel.setName(hotelDTO.getName());
         foundHotel.setLocation(hotelDTO.getLocation());
-        foundHotel.setRoom(hotelDTO.getRoom());
         //repoda update diye bir meyhod yok. save methodu uzernden islem yapilir. obje varsa update, yoksa yeni kayit
         hotelRepository.save(foundHotel);
     }
