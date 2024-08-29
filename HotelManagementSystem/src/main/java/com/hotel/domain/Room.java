@@ -31,7 +31,6 @@ public class Room {
     @ManyToOne()
     private Hotel hotel;
 
-    //tekrar bakilacak
     @OneToMany(mappedBy = "room")
     private List<Reservation> reservation;
 
