@@ -24,7 +24,7 @@ public class Reservation {
     private Long id;
 
     @ManyToOne
-    @JsonIgnore
+    //@JsonIgnore
     private Guest guest;
 
     @ManyToOne
