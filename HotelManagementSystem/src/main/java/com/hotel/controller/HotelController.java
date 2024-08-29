@@ -22,7 +22,7 @@ public class HotelController {
 
     //CREATE
     //1-save a hotel & return message--CREATED
-    //request : http://localhost8080/hotels + POST +json format body
+    //request : http://localhost:8080/hotels + POST +json format body
     //responce : basarili + http status code(CREATED)
     //ayni url ile post, delete, update
     @PostMapping
@@ -33,7 +33,7 @@ public class HotelController {
 
     //READ
     //2-Get all hotels, return : List<Hotel> + OK
-    //http://localhost8080/hotels + GET
+    //http://localhost:8080/hotels + GET
     @GetMapping
     public ResponseEntity<List<Hotel>> getAllHotels() {
         List<Hotel> hotels = hotelService.getHotels();
@@ -52,7 +52,7 @@ public class HotelController {
 
     //DELETE
     //4- delete a hotel by ID, return:Message
-    //request : http://localhost:8080/books/2
+    //request : http://localhost:8080/hotels/2
     //response : Message
     @DeleteMapping("/{deleteId}")
     public ResponseEntity<String > deleteHotel(@PathVariable Long id){
