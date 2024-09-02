@@ -1,16 +1,15 @@
 package com.hotel.controller;
 
 import com.hotel.domain.Room;
+import com.hotel.dto.RoomDTO;
 import com.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/rooms")
@@ -29,6 +28,51 @@ public class RoomController {
         roomService.saveRoom(room);
         return new ResponseEntity<>("Oda basariyla kaydedildi", HttpStatus.CREATED);
     }
+
+    //READ
+    //2-Get all rooms, return : List<Room>
+    //http://localhost8080/rooms + GET +HTTP.OK
+    @GetMapping
+    public ResponseEntity<List<Room>> getAllRooms(){
+        List<Room> rooms = roomService.getAllRooms();
+        return ResponseEntity.ok(rooms);
+    }
+
+    //3-Get a room by Id,return : Room
+    //http://localhost:8080/rooms/2
+    @GetMapping("/{id}")
+    public ResponseEntity<Room> getRoomById(@PathVariable("id") Long id){
+        Room getRoom = roomService.getRoomById(id);
+        return new ResponseEntity<>(getRoom,HttpStatus.OK);
+        //return ResponseEntity.ok(getRoom);
+
+    }
+
+    //UPDATE
+    //4- Update a Room with Using DTO, return String bir ifade olsun
+    //dto ile ana obje korunur
+    //http://localhost:8080/rooms/update?id +POST
+    @PostMapping("/update/{id}")
+    public ResponseEntity<String> updateRoomById(@PathVariable("id") Long id, @Valid @RequestBody RoomDTO roomDTO){
+        roomService.updateById(id,roomDTO);
+        return ResponseEntity.ok("Room is updated successfully!");
+    }
+    //DELETE
+    //5- delete a room by ID,return:Message
+    //http://localhost:8080/rooms/2
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteRoomById(@PathVariable("id") Long id){
+        roomService.deleteRoomById(id);
+        return ResponseEntity.ok("Room is deleted successfully!");
+
+
+    }
+
+
+
+
+
+
 
 
 
