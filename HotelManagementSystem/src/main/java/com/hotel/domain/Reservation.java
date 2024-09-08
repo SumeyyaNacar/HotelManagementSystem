@@ -30,7 +30,11 @@ public class Reservation {
 
     @NotBlank(message = "Lutfen bir tarih giriniz! ")
     @Column(nullable = false)
-    private LocalDate checkOutDate;
+    private LocalDate enteranceDate;
+
+    @NotBlank(message = "Lutfen bir tarih giriniz! ")
+    @Column(nullable = false)
+    private LocalDate existDate;
 
 
 

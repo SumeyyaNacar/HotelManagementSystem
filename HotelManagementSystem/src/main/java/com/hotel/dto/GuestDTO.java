@@ -15,8 +15,8 @@ public class GuestDTO {
     private String name;
 
     //contact inf
-    @NotBlank(message = "Lutfen gecerli bir deger giriniz!")
-    private String tcNo;
+   // @NotBlank(message = "Lutfen gecerli bir deger giriniz!")
+   // private String tcNo;
 
     @NotBlank(message = "Lutfen gecerli bir deger giriniz!")
     private String medeniDurum;
