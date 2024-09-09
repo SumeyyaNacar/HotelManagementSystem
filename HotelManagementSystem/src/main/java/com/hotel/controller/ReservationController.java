@@ -16,14 +16,14 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/reservations")
+@RequestMapping("/hotels/reservations")
 public class ReservationController {
 
     @Autowired
     private ReservationService reservationService;
 
     //1-save a reservation & return message--CREATED
-    //request : http://localhost8080/reservations + POST +json format body
+    //request : http://localhost8080/hotels/reservations + POST +json format body
     //responce : basarili + http status code(CREATED)
     //ayni url ile post, delete, update
     @PostMapping
@@ -35,7 +35,7 @@ public class ReservationController {
 
     //READ
     //2-Get all reservation, return : List<Reservation>
-    //http://localhost8080/reservations + GET
+    //http://localhost8080/hotels/reservations + GET
     @GetMapping
     public ResponseEntity<List<Reservation>> getAllReservations(){
         List<Reservation> reservationList = reservationService.getAllReservation();
@@ -44,7 +44,7 @@ public class ReservationController {
 
     //3- tum reservationlari listeleme: READ
     //tum kayitlari page page(sayfa sayfa) gosterelim.return: Page<Reservation>
-    //http://localhost:8080/reservations/page?
+    //http://localhost8080/hotels/reservations/page?
     //                               page=1&--client hangi sayfayi gormek istiyor
     //                               size=10&--bir sayfada kac tane data gormek istiyoruz
     //                               sort=enteranceDate&--siralama hangi field a gore
@@ -64,7 +64,7 @@ public class ReservationController {
     }
 
     //3-Get a reservation by Id,return : Reservation
-    //http://localhost:8080/reservations/2
+    //http://localhost8080/hotels/reservations/2
     @GetMapping("/{id}")
     public ResponseEntity<Reservation> getReservationById(@PathVariable("id") Long id){
         Reservation reservation = reservationService.getReservationById(id);
@@ -72,7 +72,7 @@ public class ReservationController {
     }
 
     //4- delete a reservation by ID,return:Message
-    //http://localhost:8080/reservations/2
+    //http://localhost8080/hotels/reservations/2
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteReservationById(@PathVariable("id") Long id){
         reservationService.deleteReservationById(id);
@@ -83,7 +83,7 @@ public class ReservationController {
 
     //5- Update a Reservation with Using DTO, return String bir ifade olsun
     //dto ile ana obje korunur
-    //http://localhost:8080/reservations/update?id +JSON +PATCH
+    //http://localhost8080/hotels/reservations/update?id +JSON +PATCH
     @PatchMapping("/update")
     public ResponseEntity<String> updateReservation(@RequestParam("id") Long id, ReservationDTO reservationDTO){
         reservationService.updateReservationById(id, reservationDTO);
