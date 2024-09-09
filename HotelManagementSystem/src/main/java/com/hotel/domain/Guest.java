@@ -33,7 +33,6 @@ public class Guest {
     private String medeniDurum;
 
     @OneToMany(mappedBy = "guest")
-    //@JsonIgnore
     private List<Reservation> reservation;
 
 
