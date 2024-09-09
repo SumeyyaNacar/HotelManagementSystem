@@ -19,14 +19,14 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/guests")
+@RequestMapping("/hotels/guests")
 public class GuestController {
 
     @Autowired
     private GuestService guestService;//field inj.
 
     //1-save a guest & return message--CREATED
-    //request : http://localhost8080/guests + POST +json format body
+    //request : http://localhost:8080/hotels/guests + POST +json format body
     //responce : basarili + http status code(CREATED)
     //ayni url ile post, delete, update
     @PostMapping
@@ -37,7 +37,7 @@ public class GuestController {
 
     //READ
     //2-Get all guests, return : List<Guest>
-    //http://localhost8080/guests + GET
+    //http://localhost:8080/hotels/guests + GET
     @GetMapping
     public ResponseEntity<List<Guest>> getAllGuest(){
         List<Guest> guestList = guestService.getAllGuest();
@@ -45,8 +45,8 @@ public class GuestController {
     }
 
     //3-Get a guest by Id,return : Guest
-    //http://localhost:8080/guests/2
-    @GetMapping("1/{id}")
+    //http://localhost:8080/hotels/guests/2
+    @GetMapping("/{id}")
     public ResponseEntity<Guest> getGuestById(@PathVariable("id") Long id){
         Guest guest = guestService.getGuestById(id);
         return ResponseEntity.ok(guest);
@@ -55,7 +55,7 @@ public class GuestController {
     //update
     //4- Update a Guest with Id Using DTO, return String bir ifade olsun
     //dto ile ana obje korunur
-    //http://localhost:8080/guests/update/2 +JSON body + POST
+    //http://localhost:8080/hotels/guests/update/2 +JSON body + POST
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateGuest(@PathVariable("id") Long id, @Valid @RequestBody GuestDTO guestDTO){
         guestService.updateGuestById(id, guestDTO);
@@ -63,7 +63,7 @@ public class GuestController {
     }
 
     //5- delete a Guest by ID,return:Message
-    //http://localhost:8080/guests/delete/2
+    //http://localhost:8080/hotels/guests/delete/2
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteGuestById(@PathVariable("id") Long id){
         guestService.deleteGuestById(id);
@@ -71,7 +71,7 @@ public class GuestController {
     }
 
     //6-Get Guests with Page
-    //http://localhost:8080/guests/page?
+    //http://localhost:8080/hotels/guests/page?
     //                               page=1&--client hangi sayfayi gormek istiyor
     //                               size=10&--bir sayfada kac tane data gormek istiyoruz
     //                               sort=name&--siralama hangi field a gore
