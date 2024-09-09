@@ -1,5 +1,6 @@
 package com.hotel.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,6 +31,7 @@ public class Room {
     private Hotel hotel;
 
     @OneToMany(mappedBy = "room")
+    @JsonIgnore
     private List<Reservation> reservation;
 
 
