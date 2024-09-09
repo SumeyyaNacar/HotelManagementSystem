@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rooms")
+@RequestMapping("/hotels/rooms")
 public class RoomController {
 
     @Autowired
@@ -20,7 +20,7 @@ public class RoomController {
 
     //CREATE
     //1-save a room & return message--CREATED
-    //request : http://localhost:8080/rooms + POST +json format body
+    //request : http://localhost:8080/hotels/rooms + POST +json format body
     //responce : basarili + http status code(CREATED)
     //ayni url ile post, delete, update
     @PostMapping
@@ -31,7 +31,7 @@ public class RoomController {
 
     //READ
     //2-Get all rooms, return : List<Room>
-    //http://localhost8080/rooms + GET +HTTP.OK
+    //http://localhost8080/hotels/hotels/rooms + GET +HTTP.OK
     @GetMapping
     public ResponseEntity<List<Room>> getAllRooms(){
         List<Room> rooms = roomService.getAllRooms();
@@ -39,7 +39,7 @@ public class RoomController {
     }
 
     //3-Get a room by Id,return : Room
-    //http://localhost:8080/rooms/2
+    //http://localhost:8080/hotels/rooms/2
     @GetMapping("/{id}")
     public ResponseEntity<Room> getRoomById(@PathVariable("id") Long id){
         Room getRoom = roomService.getRoomById(id);
@@ -51,15 +51,15 @@ public class RoomController {
     //UPDATE
     //4- Update a Room with Using DTO, return String bir ifade olsun
     //dto ile ana obje korunur
-    //http://localhost:8080/rooms/update?id +POST
-    @PostMapping("/update/{id}")
+    //http://localhost:8080/hotels/rooms/update?id +POST
+    @PutMapping("/update/{id}")
     public ResponseEntity<String> updateRoomById(@PathVariable("id") Long id, @Valid @RequestBody RoomDTO roomDTO){
         roomService.updateById(id,roomDTO);
         return ResponseEntity.ok("Room is updated successfully!");
     }
     //DELETE
     //5- delete a room by ID,return:Message
-    //http://localhost:8080/rooms/2
+    //http://localhost:8080/hotels/rooms/2
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteRoomById(@PathVariable("id") Long id){
         roomService.deleteRoomById(id);
