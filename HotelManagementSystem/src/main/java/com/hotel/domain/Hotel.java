@@ -1,5 +1,6 @@
 package com.hotel.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hotel.dto.HotelDTO;
 import lombok.*;
 
@@ -31,6 +32,7 @@ public class Hotel {
     private String location;
 
     @OneToMany(mappedBy = "hotel")
+    @JsonIgnore
     private List<Room> room=new ArrayList<>();
 
 
