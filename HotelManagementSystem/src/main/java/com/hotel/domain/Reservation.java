@@ -28,11 +28,19 @@ public class Reservation {
     @ManyToOne
     private Room room;//burasinin list olup olmadigina bak
 
-    @NotBlank(message = "Lutfen bir tarih giriniz! ")
+    //@NotBlank(message = "Lutfen bir tarih giriniz! ")
     @Column(nullable = false)
     private LocalDate enteranceDate;
 
-    @NotBlank(message = "Lutfen bir tarih giriniz! ")
+    public void setEnteranceDate(LocalDate enteranceDate) {
+        this.enteranceDate = LocalDate.now();
+    }
+
+    public void setExistDate(LocalDate existDate) {
+        this.existDate = LocalDate.now();
+    }
+
+    //@NotBlank(message = "Lutfen bir tarih giriniz! ")
     @Column(nullable = false)
     private LocalDate existDate;
 
