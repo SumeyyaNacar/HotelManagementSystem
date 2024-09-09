@@ -32,15 +32,20 @@ public class RoomService {
         return foundRoom;
     }
 
+    //update room by id
     public void updateById(Long id, RoomDTO roomDTO) {
-        Room existingRoom = getRoomById(id);//room db den getirildi
+       try {
+           Room existingRoom = getRoomById(id);//room db den getirildi
 
-        //dtodan gelen bilgiler ile asil obje guncelleyenecek
-        existingRoom.setRoomNumber(roomDTO.getRoomNumber());
-        existingRoom.setRoomType(roomDTO.getRoomType());
+           //dtodan gelen bilgiler ile asil obje guncelleyenecek
+           existingRoom.setRoomNumber(roomDTO.getRoomNumber());
+           existingRoom.setRoomType(roomDTO.getRoomType());
 
-        //guncelleme icin
-        repository.save(existingRoom);
+           //guncelleme icin
+           repository.save(existingRoom);
+       }catch (RoomNotFoundException e){
+           System.out.println("Room not found by id: "+e.getMessage());
+       }
     }
 
     public void deleteRoomById(Long id) {
