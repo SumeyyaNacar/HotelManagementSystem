@@ -45,7 +45,7 @@ public class HotelController {
     //request : http://localhost:8080/hotels/2
     //response : return : Hotel
     @GetMapping("/{identity}")
-    public ResponseEntity<Hotel> getHotel(@PathVariable Long id){
+    public ResponseEntity<Hotel> getHotel(@PathVariable("identity") Long id){
         Hotel hotel = hotelService.getHotelById(id);
         return ResponseEntity.ok(hotel);
     }

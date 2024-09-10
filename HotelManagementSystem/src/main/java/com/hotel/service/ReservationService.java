@@ -27,7 +27,8 @@ public class ReservationService {
 
     //get all reservations
     public List<Reservation> getAllReservation() {
-        return reservationRepository.findAll();
+        List<Reservation> reservationList = reservationRepository.findAll();
+        return reservationList;
     }
 
 

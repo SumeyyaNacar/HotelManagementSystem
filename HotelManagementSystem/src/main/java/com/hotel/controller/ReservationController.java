@@ -35,7 +35,7 @@ public class ReservationController {
 
     //READ
     //2-Get all reservation, return : List<Reservation>
-    //http://localhost8080/hotels/reservations + GET
+    //http://localhost:8080/hotels/reservations + GET
     @GetMapping
     public ResponseEntity<List<Reservation>> getAllReservations(){
         List<Reservation> reservationList = reservationService.getAllReservation();
