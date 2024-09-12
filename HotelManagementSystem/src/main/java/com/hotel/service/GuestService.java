@@ -20,7 +20,10 @@ public class GuestService {
 
     //save a guest
     public void saveGuest(Guest guest) {
-        guestRepository.save(guest);
+
+        guestRepository.save(guest);//id burada generate ediliyor
+
+
     }
 
     //get all guests
