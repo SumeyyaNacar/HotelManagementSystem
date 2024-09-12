@@ -81,8 +81,8 @@ public class GuestController {
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "10") int size,
             @RequestParam(value = "sort", defaultValue = "name") String sort,
-            @RequestParam(value = "direction", defaultValue = "desc") Sort.Direction direction){
-
+            @RequestParam(value = "direction", defaultValue = "DESC") Sort.Direction direction){
+//direction enum typedır.
 
         Pageable pageable = PageRequest.of(page,size,Sort.by(direction,sort));
 
