@@ -19,10 +19,9 @@ public class ReservationService {
 
     //save
     public void saveReservation(Reservation reservation) {
-        if (reservationRepository.existsById(reservation.getId())){
-            throw new ConflictException("Id already exists!");
-        }
+
         reservationRepository.save(reservation);
+
     }
 
     //get all reservations
