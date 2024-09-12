@@ -76,6 +76,8 @@ public class HotelController {
 
     //Get Hotels with Page
 
+    //otelin odalarını gösterme
+
 
 
 
